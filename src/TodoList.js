@@ -7,21 +7,21 @@ import Todo from './Todo';
 
 const TodoList = (props) => {
 
-  const { todos, removeTodo } = props;
+  const { todos, removeTodo, toggleTodo, editTodo } = props;
 
   return (
     <Paper>
       <List>
-        {props.todos.map(todo => (
+        {todos.map((todo, i) => (
           <>
             <Todo
-            task={todo.task}
             key={todo.id}
-            id={todo.id}
-            completed={todo.completed}
+            {...todo}
             removeTodo={removeTodo}
+            toggleTodo={toggleTodo}
+            editTodo={editTodo}
             />
-            <Divider/>
+            {i < todos.length - 1 && <Divider/>}
           </>
         ))}
       </List>
