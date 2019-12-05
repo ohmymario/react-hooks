@@ -9,24 +9,25 @@ const TodoList = (props) => {
 
   const { todos, removeTodo, toggleTodo, editTodo } = props;
 
-  return (
-    <Paper>
-      <List>
-        {todos.map((todo, i) => (
-          <>
-            <Todo
-            key={todo.id}
-            {...todo}
-            removeTodo={removeTodo}
-            toggleTodo={toggleTodo}
-            editTodo={editTodo}
-            />
-            {i < todos.length - 1 && <Divider/>}
-          </>
-        ))}
-      </List>
-    </Paper>
-  )
+  if (todos.length)
+    return (
+      <Paper>
+        <List>
+          {todos.map((todo, i) => (
+            <React.Fragment key={todo.id}>
+              <Todo
+              {...todo}
+              removeTodo={removeTodo}
+              toggleTodo={toggleTodo}
+              editTodo={editTodo}
+              />
+              {i < todos.length - 1 && <Divider/>}
+            </React.Fragment>
+          ))}
+        </List>
+      </Paper>
+    )
+  return null;
 }
 
 export default TodoList;
