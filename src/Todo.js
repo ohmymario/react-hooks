@@ -10,11 +10,11 @@ import EditIcon from '@material-ui/icons/Edit';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 
 import EditTodoForm from './EditTodoForm';
-import { TodosContext } from './contexts/todos.context';
+import { DispatchContext } from './contexts/todos.context';
 
 const Todo = (props) => {
 
-  const { dispatch } = useContext(TodosContext) ;
+  const dispatch = useContext(DispatchContext) ;
   const [ isEditing, toggle ] = useToggleState(false);
   const { id, task, completed } = props;
 

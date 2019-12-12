@@ -4,11 +4,11 @@ import Paper from '@material-ui/core/Paper';
 
 import useInputState from './hooks/useInputState';
 
-import { TodosContext } from './contexts/todos.context';
+import { DispatchContext } from './contexts/todos.context';
 
 const TodoForm = () => {
   const [ value, handleChange, reset ] = useInputState('');
-  const { dispatch } = useContext(TodosContext);
+  const dispatch = useContext(DispatchContext);
 
   const submitForm = e => {
     e.preventDefault();
