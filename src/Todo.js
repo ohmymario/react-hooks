@@ -14,7 +14,7 @@ import { TodosContext } from './contexts/todos.context';
 
 const Todo = (props) => {
 
-  const { removeTodo, toggleTodo } = useContext(TodosContext) ;
+  const { dispatch } = useContext(TodosContext) ;
   const [ isEditing, toggle ] = useToggleState(false);
   const { id, task, completed } = props;
 
@@ -25,7 +25,7 @@ const Todo = (props) => {
           <Checkbox
             checked={completed}
             tabIndex={-1}
-            onClick={() => toggleTodo(id)}
+            onClick={() => dispatch({ type: 'TOGGLE', id: id })}
           />
 
           <ListItemText
@@ -36,7 +36,9 @@ const Todo = (props) => {
 
           <ListItemSecondaryAction>
 
-            <IconButton aria-label="Delete" onClick={() => removeTodo(id)}>
+            <IconButton
+            aria-label="Delete"
+            onClick={() => dispatch({ type: 'REMOVE', id: id })}>
               <DeleteIcon/>
             </IconButton>
 
