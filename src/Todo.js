@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, memo } from 'react';
 import useToggleState from './hooks/useToggleState';
 
 import ListItem from '@material-ui/core/ListItem';
@@ -53,4 +53,4 @@ const Todo = (props) => {
   )
 }
 
-export default Todo;
+export default memo(Todo);
